@@ -2,17 +2,19 @@
 	require_once 'vendor/autoload.php';
 	use Goutte\CLient;
 
-	function getName($length = 10) {
+	define("DIR", $_GET['dir']);
+
+	function getName() {
 	   $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	   $charactersLength = strlen($characters);
 	   $randomString = '';
 	   
-	   for ($i = 0; $i < $length; $i++) {
+	   for ($i = 0; $i < 10; $i++) {
 	       $randomString .= $characters[rand(0, $charactersLength - 1)];
 	   }
 
-	   $dir = 'img';
-		
+		$dir = DIR;
+
 	   if(!file_exists($dir)) {
           mkdir($dir, 0777, true);
 	   }
@@ -20,14 +22,14 @@
 	   $filename = $dir . "/" . $randomString . ".jpg";
 
 	   if(file_exists($filename)) {
-			return getName();
+			return getName($dir);
 	   }
 
 	   return $filename;
 	}
 
 	function scrap($crawler, $client, $i) {
-		if($i > 5) {
+		if($i > 10) {
 			return;	
 		}
 
@@ -62,5 +64,6 @@
 
 	scrap($crawler, $client, 0);
 
-	echo 'success';
+	echo 'success' . '<br/>';
+	echo '<a href="index.html">Again</a>'
 ?>
