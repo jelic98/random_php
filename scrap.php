@@ -1,31 +1,66 @@
 <?php
-	$query = $_GET['query'];
-	$dir = $_GET['dir'];
+	require_once 'vendor/autoload.php';
+	use Goutte\CLient;
 
-	if(!isset($query) || !isset($dir)) {
-		echo 'failed';
-		exit;	
+	function getName($length = 10) {
+	   $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	   $charactersLength = strlen($characters);
+	   $randomString = '';
+	   
+	   for ($i = 0; $i < $length; $i++) {
+	       $randomString .= $characters[rand(0, $charactersLength - 1)];
+	   }
+
+	   $dir = 'img';
+		
+	   if(!file_exists($dir)) {
+          mkdir($dir, 0777, true);
+	   }
+
+	   $filename = $dir . "/" . $randomString . ".jpg";
+
+	   if(file_exists($filename)) {
+			return getName();
+	   }
+
+	   return $filename;
 	}
-	
-	include('simple_html_dom.php');
-		
-	$query = urlencode($query);
-	
-	$html = file_get_html('https://www.google.com/search?q=' . $query . '&tbm=isch');
-	
-	$images = $html->find('img');
 
-	mkdir($dir, 0777, true);
+	function scrap($crawler, $client, $i) {
+		if($i > 5) {
+			return;	
+		}
 
-	for($i = 1; $i < sizeof($images); $i++) {
-		$url = $images[$i]->src;
-		
+		$crawler->filter('img')->each(function ($node) {
+		$url = $node->attr('src');
+
+		if(strpos($url, 'http') === false) {
+			return;
+		}
+
 		$content = file_get_contents($url);
 
-		$fp = fopen($dir . "/" . $i . ".jpg", "w");
+		$fp = fopen(getName(), "w");
 		fwrite($fp, $content);
 		fclose($fp);
+		});
+
+		$crawler = $client->click($crawler->selectLink('Следећа')->link());
+
+		$i++;
+
+		scrap($crawler, $client, $i);
 	}
+
+	$query = $_GET['query'];
+
+	$query = urlencode($query);
+		
+	$client = new Client();
+
+	$crawler = $client->request('GET', 'https://www.google.com/search?q=' . $query . '&tbm=isch');
+
+	scrap($crawler, $client, 0);
 
 	echo 'success';
 ?>
