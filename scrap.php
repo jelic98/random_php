@@ -3,6 +3,7 @@
 	use Goutte\CLient;
 
 	define("DIR", $_GET['dir']);
+	define("RPT", $_GET['rpt']);
 
 	function getName() {
 	   $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -28,30 +29,32 @@
 	   return $filename;
 	}
 
-	function scrap($crawler, $client, $i) {
-		if($i > 10) {
+	function scrap($i) {
+		global $crawler, $client;
+
+		$repeat = RPT;
+
+		if($i > $repeat) {
 			return;	
 		}
 
 		$crawler->filter('img')->each(function ($node) {
-		$url = $node->attr('src');
+			$url = $node->attr('src');
 
-		if(strpos($url, 'http') === false) {
-			return;
-		}
+			if(strpos($url, 'http') === false) {
+				return;
+			}
 
-		$content = file_get_contents($url);
+			$content = file_get_contents($url);
 
-		$fp = fopen(getName(), "w");
-		fwrite($fp, $content);
-		fclose($fp);
+			$fp = fopen(getName(), "w");
+			fwrite($fp, $content);
+			fclose($fp);
 		});
 
 		$crawler = $client->click($crawler->selectLink('Следећа')->link());
 
-		$i++;
-
-		scrap($crawler, $client, $i);
+		scrap(++$i);
 	}
 
 	$query = $_GET['query'];
@@ -62,7 +65,7 @@
 
 	$crawler = $client->request('GET', 'https://www.google.com/search?q=' . $query . '&tbm=isch');
 
-	scrap($crawler, $client, 0);
+	scrap(0);
 
 	echo 'success' . '<br/>';
 	echo '<a href="index.html">Again</a>'
