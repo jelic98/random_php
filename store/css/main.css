@@ -1,0 +1,61 @@
+body
+{
+	margin: 0; 
+    padding:0;
+    overflow:hidden;
+    background: #34495e;
+    color: #fff;
+}
+
+path 
+{
+	fill: #2980b9;
+    pointer-events: all;
+}
+
+path:hover
+{
+	fill: #ecf0f1;
+}
+
+path.active {
+	fill: #00FF00;
+}
+
+path.missing {
+	fill: #FF0000;
+}
+
+path.debugHide {
+	fill: none;
+}
+
+svg {
+	position: fixed;
+    width: 75%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+select
+{
+	position: absolute;
+	float: left;
+	width: 15%;
+	left: 10%;
+	top: 25%;
+	transform: translateY(-50%);
+}
+
+#selected_country {
+	position : absolute;
+	left: 20px;
+	top: 10px;
+	color: #FFFFFF;
+}
+
+#selected_country span {
+	
+}
