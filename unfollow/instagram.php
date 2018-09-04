@@ -1,8 +1,8 @@
 <?php
 // PLEASE EDIT THESE VARIABLES !!!
-$USERNAME = "dzoks_official";
-$PASSWORD = "dzokssocks2018!";
-$CACHE_PATH = "/Applications/MAMP/htdocs/random_php/unfollow/cache";
+$USERNAME = "sample_username";
+$PASSWORD = "sample_password";
+$CACHE_PATH = "/sample/cache/dir"; // must be absolute path
 $FOLLOWERS_COUNT = 400; // total followers to extract
 $FOLLOWERS_ROUND = 100; // total followers to extract in one request (must be lower than FOLLOWERS_COUNT)
 $FOLLOWING_COUNT = 10; // total following users to extract
