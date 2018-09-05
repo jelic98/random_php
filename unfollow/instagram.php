@@ -4,9 +4,9 @@ $USERNAME = "sample_username";
 $PASSWORD = "sample_password";
 $CACHE_PATH = "/sample/cache/dir"; // must be absolute path
 $FOLLOWERS_COUNT = 400; // total followers to extract
-$FOLLOWERS_ROUND = 100; // total followers to extract in one request (must be lower than FOLLOWERS_COUNT)
+$FOLLOWERS_ROUND = 100; // total followers to extract in one request (cannot be greater than FOLLOWERS_COUNT)
 $FOLLOWING_COUNT = 10; // total following users to extract
-$FOLLOWING_ROUND = 10; // total following users to extract in one request (must be lower than FOLLOWING_COUNT)
+$FOLLOWING_ROUND = 10; // total following users to extract in one request (cannot be greater than FOLLOWING_COUNT)
 // DO NOT EDIT ANYTHING BELOW THIS LINE !!!
 // ...it just works ;)
 ?>
