@@ -18,6 +18,7 @@ $FOLLOWING_ROUND = 10; // total following users to extract in one request (canno
 		<script>
 			function openWindows() {
 				<?php
+					ini_set("display_errors", "on");
 					require("vendor/autoload.php");
 
 					$index = 0;
