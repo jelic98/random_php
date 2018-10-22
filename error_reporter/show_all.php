@@ -12,7 +12,7 @@
 	<body>
 		<?php
 			$cmd = "SELECT reports.id AS id,
-				reports.project AS project,
+				projects.name AS project,
 				reports.message AS message,
 				reports.resolved AS resolved
 				FROM reports
