@@ -1,7 +1,6 @@
 <?php
 	require("autoload.php");
 
-	check_api_key();
 	check_params(["id"], "GET");
 
 	$report = strip($_GET["id"]);
