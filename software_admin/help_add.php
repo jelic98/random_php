@@ -3,7 +3,6 @@
 
 	check_params(["email", "message"], "GET");
 
-	$api_key = get_api_key();
 	$email = strip($_GET["email"]);
 	$message = strip($_GET["message"]);
 	
