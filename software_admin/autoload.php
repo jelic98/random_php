@@ -13,7 +13,7 @@
 	
 	if($debug) {
 		$db_host = "localhost";
-		$db_name = "error_reporter";
+		$db_name = "software_admin";
 		$db_username = "root";
 		$db_password = "root";
 	}else {
@@ -33,6 +33,7 @@
 
 		if(!isset($api_key) || empty($api_key)) {
 			echo "API key is required";
+			http_response_code(401);
 			exit;	
 		}
 	
@@ -41,6 +42,7 @@
 
 		if(!isset($project)) {
 			echo "API key is not valid";
+			http_response_code(401);
 			exit;	
 		}
 	}
@@ -66,6 +68,7 @@
 
 		if($errorFound) {
 			echo "Following parameters are required " . json_encode($params);
+			http_response_code(400);
 			exit;
 		}
 	}
