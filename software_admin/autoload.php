@@ -32,8 +32,7 @@
 		$api_key = get_api_key();
 
 		if(!isset($api_key) || empty($api_key)) {
-			echo "API key is required";
-			http_response_code(401);
+			response(401, "API key is required");
 			exit;	
 		}
 	
@@ -41,8 +40,7 @@
 		$project = mysqli_fetch_array(mysqli_query($GLOBALS['connect'], $cmd))[0];
 
 		if(!isset($project)) {
-			echo "API key is not valid";
-			http_response_code(401);
+			response(401, "API key is not valid");
 			exit;	
 		}
 	}
@@ -67,13 +65,19 @@
 		}
 
 		if($errorFound) {
-			echo "Following parameters are required " . json_encode($params);
-			http_response_code(400);
+			response(400, "Following parameters are required " . json_encode($params));
 			exit;
 		}
 	}
 
 	function strip($var) {
 		return mysqli_real_escape_string($GLOBALS['connect'], htmlspecialchars(strip_tags(trim($var))));
-    }
+	}
+
+	function response($code, $message) {
+		echo $message;
+
+		http_response_code($code);
+		http_response_code();
+	}
 ?>

@@ -9,20 +9,17 @@
 	$activated = mysqli_fetch_array(mysqli_query($connect, $cmd))[0];
 
 	if(!isset($activated)) {
-		echo "Invalid license code";
-		http_response_code(400);
+		response(400, "Invalid license code");
 		exit;
 	}
 
 	if($activated == 1) {
-		echo "License already activated";
-		http_response_code(400);
+		response(400, "License already activated");
 		exit;
 	}
 
 	$cmd = "UPDATE licenses SET activated=1 WHERE code=" . $code;
 	mysqli_query($connect, $cmd);
 
-	echo "License successfully activated";
-	http_response_code(200);
+	response(200, "License successfully activated");
 ?>

@@ -11,13 +11,12 @@
 	$project = mysqli_fetch_array(mysqli_query($connect, $cmd))[0];
 
 	if(!isset($project)) {
-		echo "Invalid project";
-		http_response_code(400);
+		response(400, "Invalid project");
 		exit;
 	}
 
 	$cmd = "INSERT INTO reports (project, message) VALUES('$project', '$message')";
 	mysqli_query($connect, $cmd);
 
-	http_response_code(200);
+	response(200, "Succes");
 ?>

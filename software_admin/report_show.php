@@ -39,7 +39,7 @@
 				echo "<td>" . ($resolved == 1 ? "YES" : "NO") . "</td>";
 
 				if($resolved != 1) {
-					echo '<td><a href="resolve.php?id='. $reportId . '">Resolve</a></td>';
+					echo '<td><a href="report_resolve.php?id='. $reportId . '">Resolve</a></td>';
 				}
 				
 				echo "</tr>";
