@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<?php
-			$cmd = "SELECT email, message FROM contact";
+			$cmd = "SELECT email, message FROM help";
 			$result = mysqli_query($connect, $cmd);
 
 			echo "<table>";
