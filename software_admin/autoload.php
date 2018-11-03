@@ -1,4 +1,33 @@
 <?php
+	session_start();
+
+	$debug = false;
+
+	if(!strcmp($_SERVER['HTTP_HOST'], "localhost")) {
+		$debug = true;
+	}
+
+	ini_set("display_errors", $debug ? "on" : "off");
+
+	// DATABASE
+	
+	if($debug) {
+		$db_host = "localhost";
+		$db_name = "error_reporter";
+		$db_username = "root";
+		$db_password = "root";
+	}else {
+		$db_host = ".";
+		$db_name = ".";
+		$db_username = ".";
+		$db_password = ".";
+	}
+
+	$connect = mysqli_connect($db_host, $db_username, $db_password);	
+	mysqli_select_db($connect, $db_name);
+
+	// FUNCTIONS
+
 	function check_api_key() {
 		$api_key = get_api_key();
 
@@ -43,5 +72,5 @@
 
 	function strip($var) {
 		return mysqli_real_escape_string($GLOBALS['connect'], htmlspecialchars(strip_tags(trim($var))));
-    }	
+    }
 ?>

@@ -70,7 +70,7 @@ input[type=submit]:hover {
 </head>
 <body>
 <div class="container">
-	<form action="contact.php" method="GET">
+	<form action="help_add.php" method="GET">
     <div class="row">
       <div class="col-25">
         <label for="email">Email</label>

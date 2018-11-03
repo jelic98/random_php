@@ -2,8 +2,11 @@
 
 Various PHP applications.
 
-## Error Reporter
-Minimal error reporting API.
+## Software Admin
+Package for software product administration. Includes:
+* Error Reporter API - gathers all uncaught exceptions from all app instances
+* Licensing API - activating apps with code
+* Help - basic contact form for asking questions about app
 
 ## Scrapper
 Basic scrapper for Google Images thumbnails.
