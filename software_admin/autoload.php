@@ -73,11 +73,8 @@
 	function strip($var) {
 		return mysqli_real_escape_string($GLOBALS['connect'], htmlspecialchars(strip_tags(trim($var))));
 	}
-
+	
 	function response($code, $message) {
-		echo $message;
-
-		http_response_code($code);
-		http_response_code();
+		echo $code . " " . $message;
 	}
 ?>
