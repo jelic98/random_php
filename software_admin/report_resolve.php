@@ -8,5 +8,5 @@
 	$cmd = "UPDATE reports SET resolved=1 WHERE id=" . $report;
 	mysqli_query($connect, $cmd);
 
-	header("location: show_all.php");
+	header("location: report_show.php");
 ?>
