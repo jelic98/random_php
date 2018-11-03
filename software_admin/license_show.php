@@ -18,6 +18,7 @@
 			echo "<tr>";
 			echo "<th>Full name</th>";
 			echo "<th>Code</th>";
+			echo "<th>Activated</th>";
 			echo "</tr>";
 		
 			while($row = mysqli_fetch_array($result)) {

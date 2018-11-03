@@ -3,7 +3,7 @@
 
 	check_params(["code"], "POST");
 
-	$code = strip($_GET["code"]);
+	$code = strip($_POST["code"]);
 
 	$cmd = "SELECT activated FROM licenses WHERE code='$code'";
 	$activated = mysqli_fetch_array(mysqli_query($connect, $cmd))[0];
@@ -18,7 +18,7 @@
 		exit;
 	}
 
-	$cmd = "UPDATE licenses SET activated=1 WHERE code=" . $code;
+	$cmd = "UPDATE licenses SET activated=1 WHERE code='$code'";
 	mysqli_query($connect, $cmd);
 
 	response(200, "License successfully activated");
