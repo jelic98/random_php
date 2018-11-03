@@ -10,5 +10,5 @@
 	$cmd = "INSERT INTO licenses (name, code) VALUES('$name', '$code')";
 	mysqli_query($connect, $cmd);
 
-	echo "License successfully added";
+	echo "License successfully created";
 ?>

@@ -11,24 +11,22 @@
 	</head>
 	<body>
 		<?php
-			$cmd = "SELECT * FROM licenses";
+			$cmd = "SELECT * FROM projects";
 			$result = mysqli_query($connect, $cmd);
 
 			echo "<table>";
 			echo "<tr>";
-			echo "<th>Full name</th>";
-			echo "<th>Code</th>";
+			echo "<th>Project name</th>";
+			echo "<th>API key</th>";
 			echo "</tr>";
 		
 			while($row = mysqli_fetch_array($result)) {
 				$name = $row['name'];
-				$code = $row['code'];
-				$activated = $row['activated'];
+				$key = $row['api_key'];
 				
 				echo "<tr>";
 				echo "<td>" . $name . "</td>";
-				echo "<td>" . $code . "</td>";
-				echo "<td>" . ($activated == 1 ? "YES" : "NO") . "</td>";
+				echo "<td>" . $key . "</td>";
 				echo "</tr>";
 			}
 	

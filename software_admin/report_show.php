@@ -18,7 +18,7 @@
 				FROM reports
 				INNER JOIN projects
 				ON reports.project=projects.id";
-			$result = mysqli_query($connect, $cmd) or die(mysqli_error($connect));
+			$result = mysqli_query($connect, $cmd);
 
 			echo "<table>";
 			echo "<tr>";

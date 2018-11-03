@@ -12,7 +12,7 @@
 	<body>
 		<?php
 			$cmd = "SELECT email, message FROM contact";
-			$result = mysqli_query($connect, $cmd) or die(mysqli_error($connect));
+			$result = mysqli_query($connect, $cmd);
 
 			echo "<table>";
 			echo "<tr>";
