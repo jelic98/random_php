@@ -23,5 +23,6 @@
 	$cmd = "UPDATE licenses SET activated=1 WHERE code=" . $code;
 	mysqli_query($connect, $cmd);
 
+	echo "License successfully activated";
 	http_response_code(200);
 ?>
