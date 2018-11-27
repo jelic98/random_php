@@ -18,8 +18,8 @@
 
 	$hash = random_string(16);
 
-	$cmd = "UPDATE users SET hash='$hash' WHERE username='$username'";
+	$cmd = "UPDATE users SET session_hash='$hash' WHERE username='$username'";
 	mysqli_query($connect, $cmd);
-
+	
 	response(200, $hash . " " . $type);
 ?>
