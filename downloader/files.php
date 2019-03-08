@@ -2,6 +2,6 @@
 $files = [
 	'rqm' => 'RequirementsModel.rqm',
 	'fum' => 'ObjectOrientedModel.oom',
-	'demo' => 'InfView.class'
+	'demo' => 'Awesome.class'
 ];
 ?>

@@ -23,3 +23,6 @@ Webshop that allows users to create their own virtual stores. Written a few year
 
 ## Blog
 Complete blog website.
+
+## Downloader
+Utility script for downloading files.
