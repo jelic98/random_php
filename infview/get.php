@@ -20,12 +20,4 @@
    	header('Content-Disposition: attachment; filename="' . $filename . '"');
         	
 	readfile($filename);  
-
-	if(isset($_SERVER['HTTP_REFERER'])) {
-		echo '<script type="text/javascript">';
-		echo 'window.location.replace("' . $_SERVER['HTTP_REFERER'] . '");';
-		echo '</script>';
-	}else {
-		echo '200 OK';
-	}
 ?>
