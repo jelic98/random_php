@@ -5,8 +5,10 @@
 	
 	$hash = strip($_POST["hash"]);
 
-	$cmd = "SELECT username FROM users WHERE session_hash='$hash'";
-	$username = mysqli_fetch_array(mysqli_query($connect, $cmd))[0];
+	$cmd = "SELECT * FROM users WHERE session_hash='$hash'";
+	$row = mysqli_fetch_array(mysqli_query($connect, $cmd));
+	$username = $row["username"];
+	$type = $row["type"];
 
 	if(!isset($username)) {
 		response(400, "Invalid session");
