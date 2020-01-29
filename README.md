@@ -1,6 +1,6 @@
 # RandomPHP
 
-Various PHP applications.
+Tiny PHP applications.
 
 ## Software Admin
 Package for software product administration. Includes:
