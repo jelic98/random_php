@@ -26,3 +26,6 @@ Complete blog website.
 
 ## Downloader
 Utility script for downloading files.
+
+## Markers
+Placing location markers defined in a text file on Google Map API.
